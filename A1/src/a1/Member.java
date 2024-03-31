@@ -1,43 +1,72 @@
 package a1;
 
 import java.io.Serializable;
+
 /**
  *
  * @author Joshua
  */
-public class Member implements Serializable
- {
-	private String title;
-	private int nbrPages;
-	private double cost;
+public class Member implements Serializable {
 
+    private int id;
+    private String firstName;
+    private String lastName;
+    private String address;
+    private int phone;
 
-	 public Member() {
+    public Member() {
 
-	 }
-     public Member(String title,int nbrPages){
-	   this.title=title;
-	   this.nbrPages=nbrPages;
-   }
+    }
 
+    public Member(int id, String firstName, String lastName, String address, int phone) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.phone = phone;
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    public String getFirstName() {
+        return firstName;
+    }
 
-	public String viewDetails() {
-		return "Title:"+title+"\nNumber of pages:"+nbrPages+"\nTotal cost:$"+cost;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	public void calculateCost() {
-		final double COST_PER_PAGE=0.15;
+    public String getLastName() {
+        return lastName;
+    }
 
-		cost=nbrPages*COST_PER_PAGE;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-  }
+    public String getAddress() {
+        return address;
+    }
 
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public int getPhone() {
+        return phone;
+    }
+
+    public void setPhone(int phone) {
+        this.phone = phone;
+    }
+
+    public String viewDetails() {
+        return firstName + ":" + lastName + ":" + address + ":" + phone;
+    }
+}
