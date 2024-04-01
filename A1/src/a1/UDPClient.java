@@ -2,49 +2,40 @@ package a1;
 
 import java.net.*;
 import java.io.*;
-import java.util.*;
 
 /**
- *
+ * Runs the Client for the UCP side of the application.
+ * Requests the member object list from server
+ * Displays the list once returned
+ * 
  * @author Joshua
  */
 public class UDPClient {
 
     public static void main(String args[]) {
-
-        //The first argument is the message to send to the server.
-        //The second argument is the name of the server.
+        // Setup Socket and Port data
         DatagramSocket aSocket = null;
+        int serverPort = 2275;
+        
         try {
-
-            //Create a UDP socket
+            // Prepare client to send message to server
             aSocket = new DatagramSocket();
-
-            String msg = "memberlistObject";
-            //Prepare the message to send to the server
-            byte[] m = msg.getBytes();
+            String fileName = "memberlistObject";
+            byte[] f = fileName.getBytes();
             InetAddress aHost = InetAddress.getByName("localhost");
-
-            //Agreed port
-            int serverPort = 2275;
-
-            //Create a UDP datagram
-            DatagramPacket request = new DatagramPacket(m, msg.length(), aHost, serverPort);
-
-            //Send the request
+            
+            // Create and Send Packet
+            DatagramPacket request = new DatagramPacket(f, fileName.length(), aHost, serverPort);
             aSocket.send(request);
 
-            //Prepare a buffer to receive the reply from the server
+            //Prepare for Server Reply
             byte[] buffer = new byte[1000];
-
-            //Waiting for reply
             DatagramPacket reply = new DatagramPacket(buffer, buffer.length);
             aSocket.receive(reply);
 
-            //Display the reply
+            // Display server reply
             String response = new String(reply.getData(), 0, reply.getLength());
             System.out.println("Response from Server: \n" + response);
-
         } catch (SocketException e) {
             System.out.println("Socket: " + e.getMessage());
         } catch (IOException e) {

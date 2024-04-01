@@ -5,21 +5,29 @@ import java.io.*;
 import java.util.HashSet;
 
 /**
- *
+ * Runs the Server for the UDP side of the application.
+ * Reads requests from clients and constructs response
+ * 
  * @author Joshua
  */
 public class UDPServer {
 
     public static void main(String args[]) {
+        // Setup Socket and Port data
         DatagramSocket aSocket = null;
         int port = 2275;
+        
         try {
             aSocket = new DatagramSocket(port);
             byte[] buffer = new byte[1000];
+            // Waits for requests from Clients
             while (true) {
+                // Read Request
                 DatagramPacket request = new DatagramPacket(buffer, buffer.length);
                 aSocket.receive(request);
                 System.out.println("Request from Client: " + new String(request.getData(), 0, request.getLength()));
+                
+                // Construct table and send response
                 String response = constructTable();
                 byte[] r = response.getBytes();
                 DatagramPacket reply = new DatagramPacket(r, response.length(), request.getAddress(), request.getPort());
@@ -38,6 +46,7 @@ public class UDPServer {
 
     // Helper method to construct the member table being sent
     private static String constructTable() {
+        // Setup table with correct padding
         String table = "";
         table += String.format("%-15s", "|First Name");
         table += String.format("%-15s", "|Last Name");
