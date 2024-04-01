@@ -43,7 +43,7 @@ public class UDPClient {
 
             //Display the reply
             String response = new String(reply.getData(), 0, reply.getLength());
-            System.out.println("Server Response: \n" + response);
+            System.out.println("Response from Server: \n" + response);
 
         } catch (SocketException e) {
             System.out.println("Socket: " + e.getMessage());
