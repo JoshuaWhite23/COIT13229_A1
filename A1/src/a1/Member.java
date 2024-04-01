@@ -8,7 +8,6 @@ import java.io.Serializable;
  */
 public class Member implements Serializable {
 
-    private int id;
     private String firstName;
     private String lastName;
     private String address;
@@ -18,20 +17,11 @@ public class Member implements Serializable {
 
     }
 
-    public Member(int id, String firstName, String lastName, String address, int phone) {
-        this.id = id;
+    public Member(String firstName, String lastName, String address, int phone) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
         this.phone = phone;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
     
     public String getFirstName() {
