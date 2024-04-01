@@ -12,7 +12,7 @@ public class Member implements Serializable {
     private String firstName;
     private String lastName;
     private String address;
-    private int phone;
+    private String phone;
 
     /**
      * Simple constructor for the member class
@@ -29,7 +29,7 @@ public class Member implements Serializable {
      * @param address address of the member
      * @param phone phone number of the member
      */
-    public Member(String firstName, String lastName, String address, int phone) {
+    public Member(String firstName, String lastName, String address, String phone) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -95,7 +95,7 @@ public class Member implements Serializable {
      *
      * @return the phone number of the member
      */
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
@@ -104,7 +104,7 @@ public class Member implements Serializable {
      *
      * @param phone the phone number of the member
      */
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
